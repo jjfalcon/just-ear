@@ -8,6 +8,7 @@ La web se ha desarrollado con la aplicación Mobirise 5.4.1. instalada en window
   * Confirmar los cambios de la web online
 * [Como configurar web Github Pages]()
 * [Como configurar dominio personalizado](https://docs.github.com/es/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
+* [Asegurar tu sitio de Páginas de GitHub con HTTPS](https://docs.github.com/es/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
 * Como incluir nuevas pagina demo.html
   * Copiar pagina de CodePen y sustituir pagina enlazada demo.html
   * Actualizar los cambios locales al respositorio y la web se actualiza automaticamente
