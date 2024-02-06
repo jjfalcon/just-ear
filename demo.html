@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Audio Streaming</title>
+  <title>JustEar Player</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="./demo.css">
 
@@ -10,13 +10,6 @@
 <body>
 <!-- partial:index.partial.html -->
 <div class="wrapper">
-  <div class="live">
-    <button class="live__trigger" data-stream-trigger>
-      <span data-stream-trigger-text>Play</span>
-    </button>
-    <span class="live__time">06:00</span>
-    <span class="live__tag">Live</span>
-  </div>
   
   <div class="audio">
     MP3
@@ -24,7 +17,9 @@
   </div>
   <div class="audio">
     Streaming AAC
-    <audio src="http://lyd.nrk.no/nrk_radio_alltid_nyheter_aac_h" controls></audio>
+<!-- partial <audio src="http://lyd.nrk.no/nrk_radio_alltid_nyheter_aac_h" controls></audio> -->    
+    <audio src="http://livestreaming3.esradio.fm/stream64.mp3" controls></audio>
+
   </div> 
 </div>
 <!-- partial -->
