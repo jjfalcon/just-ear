@@ -1,0 +1,77 @@
+html {
+  background-color: silver;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.wrapper {
+  background-color: white;
+  height: 356px;
+  padding: .5rem;
+  width: 320px;
+}
+
+.live {
+  border: 1px solid silver;
+  margin-bottom: .5rem;
+  padding: .25rem;
+  
+  &__trigger {
+    padding: .5rem;
+  }
+  
+  &__time {
+    padding: .5rem;
+  }
+  
+  &__tag {
+    background: red;
+    color: white;
+    padding: .5rem;
+  }
+}
+
+.radio {
+  &--trigger {
+    display: none;
+  }
+  
+  $panels: video, calendar, speakers;
+  
+  @each $panel in $panels {
+    &--#{$panel}:checked {
+      ~ .tabs {
+        .tab--#{$panel} {
+          border-bottom-color: black;
+        }
+      }
+      ~ .content {
+        .panel--#{$panel} {
+          height: auto;
+        }
+      }  
+    }
+  }  
+}
+
+.tabs {
+  margin-bottom: .5rem;
+}
+
+.tab {
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  margin-left: .5rem;
+  
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.panel {
+  height: 0;
+  overflow: hidden;
+}

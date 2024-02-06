@@ -1,0 +1,40 @@
+<div class="wrapper">
+  <div class="live">
+    <button class="live__trigger" data-stream-trigger>
+      <span data-stream-trigger-text>Play</span>
+    </button>
+    <span class="live__time">06:00</span>
+    <span class="live__tag">Live</span>
+  </div>
+  
+  <div class="audio">
+    MP3
+    <audio src="https://archive.org/download/testmp3testfile/mpthreetest.mp3" controls></audio>
+  </div>
+  <div class="audio">
+    Streaming AAC
+    <audio src="http://lyd.nrk.no/nrk_radio_alltid_nyheter_aac_h" controls></audio>
+  </div>
+  
+  <input class="radio radio--trigger radio--video" type="radio" name="tab" id="video" checked />
+  <input class="radio radio--trigger radio--calendar" type="radio" name="tab" id="calendar" />
+  <input class="radio radio--trigger radio--speakers" type="radio" name="tab" id="speakers" />
+
+  <div class="tabs">
+    <label class="tab tab--video" for="video">Video</label>
+    <label class="tab tab--calendar" for="calendar">Dagsorden</label>
+    <label class="tab tab--speakers" for="speakers">Talere</label>
+  </div>
+
+  <div class="content">
+    <div class="panel panel--video">
+      [VIDEO]
+    </div>
+    <div class="panel panel--calendar">
+      [CALENDAR]
+    </div>
+    <div class="panel panel--speakers">
+      [SPEAKERS]
+    </div>
+  </div>
+</div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>CodePen - Audio Streaming</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="./demo.css">
+<link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
@@ -25,7 +25,29 @@
   <div class="audio">
     Streaming AAC
     <audio src="http://lyd.nrk.no/nrk_radio_alltid_nyheter_aac_h" controls></audio>
-  </div> 
+  </div>
+  
+  <input class="radio radio--trigger radio--video" type="radio" name="tab" id="video" checked />
+  <input class="radio radio--trigger radio--calendar" type="radio" name="tab" id="calendar" />
+  <input class="radio radio--trigger radio--speakers" type="radio" name="tab" id="speakers" />
+
+  <div class="tabs">
+    <label class="tab tab--video" for="video">Video</label>
+    <label class="tab tab--calendar" for="calendar">Dagsorden</label>
+    <label class="tab tab--speakers" for="speakers">Talere</label>
+  </div>
+
+  <div class="content">
+    <div class="panel panel--video">
+      [VIDEO]
+    </div>
+    <div class="panel panel--calendar">
+      [CALENDAR]
+    </div>
+    <div class="panel panel--speakers">
+      [SPEAKERS]
+    </div>
+  </div>
 </div>
 <!-- partial -->
   
