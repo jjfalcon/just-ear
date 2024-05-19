@@ -4,6 +4,10 @@
 
 ## Desarrollo Web
 
+just-ear.com
+just-ear.es
+just-ear.github.io
+
 La web se ha desarrollado con la aplicación Mobirise 5.4.1. instalada en windows local para publicar la web en GitHub Pages del siguiente modo:
 * Como desarrollar la web
   * Abrir Mobirise y configurar la web reutilizando y configurando bloques predefinidos.
