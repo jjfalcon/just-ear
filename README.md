@@ -4,9 +4,9 @@
 
 ## Desarrollo Web
 
-just-ear.com
-just-ear.es
-just-ear.github.io
+* just-ear.com
+* just-ear.es
+* [jjfalcon.github.io\just-ear](https://jjfalcon.github.io/just-ear/)
 
 La web se ha desarrollado con la aplicación Mobirise 5.4.1. instalada en windows local para publicar la web en GitHub Pages del siguiente modo:
 * Como desarrollar la web
