@@ -3,7 +3,6 @@
 * [Audio4All. GDoc](https://docs.google.com/document/d/13JUlC1VgptD5VK8GWAdmD2NwdDkSg-sWnS76Zp7Mqps/edit#heading=h.dnvma06n7yae)
 
 ## Desarrollo Web
-
 * just-ear.com
 * just-ear.es
 * [jjfalcon.github.io\just-ear](https://jjfalcon.github.io/just-ear/)
@@ -14,15 +13,15 @@ La web se ha desarrollado con la aplicación Mobirise 5.4.1. instalada en window
   * Publicar la web en repositorio loca Github C:\Users\Juanjo\Documents\GitHub\just-ear.
   * Actualizar los cambios locales al respositorio y la web se actualiza automaticamente
   * Confirmar los cambios de la web online
-* [Como configurar web Github Pages]()
-* [Como configurar dominio personalizado](https://docs.github.com/es/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
-* [Asegurar tu sitio de Páginas de GitHub con HTTPS](https://docs.github.com/es/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
+* Publicar con GitHub Pages en 3 pasos](https://github.blog/2016-12-09-publishing-with-github-pages-now-as-easy-as-1-2-3/)
+  * [Como configurar web Github Pages]()
+  * [Como configurar dominio personalizado](https://docs.github.com/es/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
+  * [Asegurar tu sitio de Páginas de GitHub con HTTPS](https://docs.github.com/es/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
 * Como incluir nuevas pagina demo.html
   * CodePen Export .zip
   * Copiar paginas del directorio /dist al repositorio
   * Actualizar los cambios locales al respositorio y la web se actualiza automaticamente
 
 ### Alternativas IA
-
 * [Dorik AI](https://dorik.com/) Crea un sitio web completo con un simple prompt y edítalo sin escribir una sola línea de código.
 * [Pictory](https://pictory.ai/) Easy Video Creation for Content Marketers
