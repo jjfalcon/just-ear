@@ -13,7 +13,7 @@ La web se ha desarrollado con la aplicación Mobirise 5.4.1. instalada en window
   * Publicar la web en repositorio loca Github C:\Users\Juanjo\Documents\GitHub\just-ear.
   * Actualizar los cambios locales al respositorio y la web se actualiza automaticamente
   * Confirmar los cambios de la web online
-* Publicar con GitHub Pages en 3 pasos](https://github.blog/2016-12-09-publishing-with-github-pages-now-as-easy-as-1-2-3/)
+* [Publicar con GitHub Pages en 3 pasos](https://github.blog/2016-12-09-publishing-with-github-pages-now-as-easy-as-1-2-3/)
   * [Como configurar web Github Pages]()
   * [Como configurar dominio personalizado](https://docs.github.com/es/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
   * [Asegurar tu sitio de Páginas de GitHub con HTTPS](https://docs.github.com/es/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
