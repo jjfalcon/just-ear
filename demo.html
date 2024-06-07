@@ -2,27 +2,40 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>JustEar Player</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="./demo.css">
+  <title>CodePen - Stereo Demonstration in Ant Media Server </title>
+  
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<div class="wrapper">
-  
-  <div class="audio">
-    MP3
-    <audio src="https://archive.org/download/testmp3testfile/mpthreetest.mp3" controls></audio>
-  </div>
-  <div class="audio">
-    Streaming AAC
-<!-- partial <audio src="http://lyd.nrk.no/nrk_radio_alltid_nyheter_aac_h" controls></audio> -->    
-    <audio src="http://livestreaming3.esradio.fm/stream64.mp3" controls></audio>
+<h2>JustEar Demo</h2>
+<p>This sample merges two different mono audio streams (Adele & Michael Jackson) to a stereo audio stream (left is Adele, right is Michael Jackson) and sends it to JustEar Media Server. You can play the stream below and hear Adele on the left, Michael Jackson on the right. Use your headphones to hear audio clearly in different channels. </p>
 
-  </div> 
-</div>
+<br/>
+<ol>
+
+  <li>Click the "Publish" button to publish local audio to JustEar Media Server<br/></li><br/>
+<audio id="merged_audio" autoplay="false" controls muted ></audio>
+<br/>
+<p id="status_label">Status:Offline</p>
+<button id="publish_audio_button">Publish</button> 
+<br/>
+
+<br/>
+  <li>Click the "Play" button to play remote audio coming from JustEar Media Server<br/></li>
+<audio id="remote_audio" autoplay="true" controls></audio>
+<br/>
+<br/>
+<button id="play_audio_button">Play</button>
+ 
+
+<p>Use your headphones to listen audio in different channels</d>
+<p>
+<a href="https://just-ear.com">just-ear.com</a>
+</p>
+ </ol>
 <!-- partial -->
-  
+  <script type="module" src="./demo.js"></script>
+
 </body>
 </html>

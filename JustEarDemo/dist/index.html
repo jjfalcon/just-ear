@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Stereo Demonstration in Ant Media Server </title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h2>Stereo Support of Ant Media Server for Real-Time Music Streaming</h2>
+<p>This sample merges two different mono audio streams (Adele & Michael Jackson) to a stereo audio stream (left is Adele, right is Michael Jackson) and sends it to Ant Media Server. You can play the stream below and hear Adele on the left, Michael Jackson on the right. Use your headphones to hear audio clearly in different channels. </p>
+
+<br/>
+<ol>
+
+  <li>Click the "Publish" button to publish local audio to Ant Media Server<br/></li><br/>
+<audio id="merged_audio" autoplay="false" controls muted ></audio>
+<br/>
+<p id="status_label">Status:Offline</p>
+<button id="publish_audio_button">Publish</button> 
+<br/>
+
+<br/>
+  <li>Click the "Play" button to play remote audio coming from Ant Media Server<br/></li>
+<audio id="remote_audio" autoplay="true" controls></audio>
+<br/>
+<br/>
+<button id="play_audio_button" disabled="true">Play</button>
+ 
+
+<p>Use your headphones to listen audio in different channels</d>
+<p>
+<a href="https://antmedia.io">antmedia.io</a>
+</p>
+ </ol>
+<!-- partial -->
+  <script type="module" src="./script.js"></script>
+
+</body>
+</html>
