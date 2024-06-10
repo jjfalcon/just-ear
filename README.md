@@ -24,7 +24,9 @@ La web se ha desarrollado con la aplicación Mobirise 5.4.1. instalada en window
  
 ## Desarrollo PWA
 * [Creando una PWA](https://www.youtube.com/watch?v=HZURIHU92ks&ab_channel=KevinDavila) 
-* 
+* [Voice Recording Demo](https://codepen.io/winrey/pen/xvxrxR)
+* [Camara y microfono](https://codepen.io/feralninja/pen/oLOdop)
+* [Microphone Streaming & Web Audio Demo](https://codepen.io/botlab/pen/dMGPGQ)
 
 ## Alternativas IA
 * [Dorik AI](https://dorik.com/) Crea un sitio web completo con un simple prompt y edítalo sin escribir una sola línea de código.
