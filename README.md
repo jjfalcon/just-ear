@@ -21,7 +21,11 @@ La web se ha desarrollado con la aplicación Mobirise 5.4.1. instalada en window
   * CodePen Export .zip
   * Copiar paginas del directorio /dist al repositorio
   * Actualizar los cambios locales al respositorio y la web se actualiza automaticamente
+ 
+## Desarrollo PWA
+* [Creando una PWA](https://www.youtube.com/watch?v=HZURIHU92ks&ab_channel=KevinDavila) 
+* 
 
-### Alternativas IA
+## Alternativas IA
 * [Dorik AI](https://dorik.com/) Crea un sitio web completo con un simple prompt y edítalo sin escribir una sola línea de código.
 * [Pictory](https://pictory.ai/) Easy Video Creation for Content Marketers
