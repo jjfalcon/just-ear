@@ -22,11 +22,28 @@ La web se ha desarrollado con la aplicación Mobirise 5.4.1. instalada en window
   * Copiar paginas del directorio /dist al repositorio
   * Actualizar los cambios locales al respositorio y la web se actualiza automaticamente
  
-## Desarrollo PWA
-* [Creando una PWA](https://www.youtube.com/watch?v=HZURIHU92ks&ab_channel=KevinDavila) 
+## Desarrollo APP
+* [How to Publish and Play Two Audio Streams in JavaScript](https://github.com/orgs/ant-media/discussions/5368)
+* [Audio Recorder and Visualizer](https://codepen.io/eddch/pen/ZMOjPL)
+* [Audio Recording Demo](https://codepen.io/ralzohairi/pen/zYrKLWy) Icono de microfono, grabar, parar/reproducir, cancelar
 * [Voice Recording Demo](https://codepen.io/winrey/pen/xvxrxR)
+* [Voice recorder animation](https://codepen.io/michalzet/pen/oJremG)
+* [Audio recorder Animation](https://codepen.io/benhatsor/pen/LYVJKPW)
+* [MP3 Audio Recorder](https://codepen.io/naveedhuq/pen/QWVPybW)
+
+* [Web RTC - Sound and Microphone Check](https://codepen.io/rhamses/pen/BaNgxNz)
 * [Camara y microfono](https://codepen.io/feralninja/pen/oLOdop)
-* [Microphone Streaming & Web Audio Demo](https://codepen.io/botlab/pen/dMGPGQ)
+
+* [PWA. Creando una PWA](https://www.youtube.com/watch?v=HZURIHU92ks&ab_channel=KevinDavila)
+* [PWA. Demo adaptacion](https://chatgpt.com/c/dda6efd4-54ad-4b88-a41a-3840e19c679f)
+* [PWA. HTML5 responsive app template](https://codepen.io/cdn34/pen/JXzzpx)
+* [PWA. Responsive wheather app](https://codepen.io/casy/pen/RZqoJW)
+* [PWA. Responsive app showcase](https://codepen.io/sonng/pen/JxWJoN)
+* [PWA. TechDoc](https://codepen.io/Designird/pen/rPeMqj)
+* [PWA. Service Worker with Update](https://codepen.io/tlissak/pen/abZeJxw)
+
+* [Aprende a usar CodePen](https://www.youtube.com/watch?v=OrZWmkQX5O0&ab_channel=JaviNiguez)
+
 
 ## Alternativas IA
 * [Dorik AI](https://dorik.com/) Crea un sitio web completo con un simple prompt y edítalo sin escribir una sola línea de código.
