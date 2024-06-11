@@ -11,6 +11,20 @@ var publish_audio_button = document.getElementById("publish_audio_button");
 var play_audio_button = document.getElementById("play_audio_button");
 var status_label = document.getElementById("status_label");
 
+//configurar emisor/receptor con parámetros URL
+//* Emisor(sin parametro)    /demo.html
+//* Receptor con parametro   /demo.html?s=JE616400
+publish_audio_button.disabled = true;
+play_audio_button.disabled = true;
+const valores = window.location.search;
+const urlParams = new URLSearchParams(valores);
+if (urlParams.has('s')) {
+	streamId = urlParams.get('s');
+	play_audio_button.disabled = false;
+} else {
+	publish_audio_button.disabled = false;
+}
+
 publish_audio_button.addEventListener("click", () => {
 	console.log("publish audio button is clicked");
   if (publish_audio_button.innerText == "Publish") {
@@ -95,13 +109,13 @@ function publish(stream) {
 					} else if (info == "publish_started") {
 						//stream is being published
 						console.log("publish started");
-            status_label.innerText = "Status:Publishing";
+            status_label.innerText = "Status:Publishing "+streamId;
             publish_audio_button.innerText = "Stop Publishing"
 						play_audio_button.disabled = false;
 					} else if (info == "publish_finished") {
 						//stream is being finished
 						console.log("publish finished");
-             status_label.innerText = "Status:Offline";
+            status_label.innerText = "Status:Offline";
             publish_audio_button.innerText = "Publish"
 						publish_audio_button.disabled = false;
             play_audio_button.disabled = true;
