@@ -1,14 +1,16 @@
+console.log("js start");
 import {WebRTCAdaptor} from "https://cdn.skypack.dev/@antmedia/webrtc_adaptor";
 
 //The URL where you publish and play the stream
 let websocketURL = "wss://ovh36.antmedia.io:5443/WebRTCAppEE/websocket"
-let streamId = "stream20240606";// + parseInt(Math.random()*999999);
+let streamId = "JE" + parseInt(Math.random()*999999);
 var webRTCAdaptorPublisher;
 var webRTCAdaptorPlayer;
 
 var publish_audio_button = document.getElementById("publish_audio_button");
 var play_audio_button = document.getElementById("play_audio_button");
 var status_label = document.getElementById("status_label");
+
 publish_audio_button.addEventListener("click", () => {
 	console.log("publish audio button is clicked");
   if (publish_audio_button.innerText == "Publish") {
@@ -20,6 +22,7 @@ publish_audio_button.addEventListener("click", () => {
 });
 
 play_audio_button.addEventListener("click", ()=> {
+	console.log("play audio button is clicked");
   if (play_audio_button.innerText == "Play") {
      play();
   }
@@ -86,7 +89,7 @@ function publish(stream) {
 				debug: true,
 				callback: function (info, description) {
 					if (info == "initialized") {
-						console.log("initialized");
+						console.log("publish initialized");
 						publish_audio_button.disabled = false;
 						webRTCAdaptorPublisher.publish(streamId);
 					} else if (info == "publish_started") {
@@ -104,23 +107,25 @@ function publish(stream) {
             play_audio_button.disabled = true;
 					}
           else if (info == "play_started"){
+						console.log("publish play started");
             play_audio_button.innerText = "Stop Playing";
           }
           else if (info == "play_finished") {
+						console.log("publish play finished");
             play_audio_button.innerText = "Play";
           }
 					else if (info == "closed") {
             play_audio_button.disabled = true
             publish_audio_button.disabled = true;
-						//console.log("Connection closed");
+						console.log("publish closed");
 						if (typeof description != "undefined") {
-							console.log("Connecton closed: " + JSON.stringify(description));
+							console.log("publish connection closed: " + JSON.stringify(description));
 						}
 					}
 				},
 				callbackError: function (error, message) {
 					//some of the possible errors, NotFoundError, SecurityError,PermissionDeniedError
-           console.log("error is " + error + " message: " + message);
+           console.log("publish error is " + error + " message: " + message);
 					//errorHandler(error, message);
 				}
 			});
@@ -134,27 +139,31 @@ function play() {
         isPlayMode : true,
 				callback: function (info, description) {
 					if (info == "initialized") {
-						console.log("initialized");
+						console.log("play initialized");
             webRTCAdaptorPlayer.play(streamId);
 					}
           else if (info == "play_started"){
+						console.log("play started");
             play_audio_button.innerText = "Stop Playing";
           }
           else if (info == "play_finished") {
+						console.log("play finished");
             play_audio_button.innerText = "Play";
           }
 					else if (info == "closed") {
             play_audio_button.disabled = true
-						//console.log("Connection closed");
+						console.log("play closed");
 						if (typeof description != "undefined") {
-							console.log("Connecton closed: " + JSON.stringify(description));
+							console.log("play connection closed: " + JSON.stringify(description));
 						}
 					}
 				},
 				callbackError: function (error, message) {
 					//some of the possible errors, NotFoundError, SecurityError,PermissionDeniedError
-           console.log("error is " + error + " message: " + message);
+           console.log("play error is " + error + " message: " + message);
 					//errorHandler(error, message);
 				}
 			});
 }
+
+console.log("js end");

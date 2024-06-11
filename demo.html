@@ -3,38 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <title>JustEar Demo</title>
-  
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+    }
+    ol {
+      padding-left: 0;
+      list-style-type: none;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    audio {
+      width: 100%;
+      max-width: 600px;
+      display: block;
+      margin: 10px auto;
+    }
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    p, a {
+      text-align: center;
+      display: block;
+      margin: 10px auto;
+    }
+  </style>  
 </head>
+
 <body>
-<!-- partial:index.partial.html -->
+<!-- comments -->
 <h2>JustEar Demo</h2>
-<p>This sample merges two different mono audio streams (Adele & Michael Jackson) to a stereo audio stream (left is Adele, right is Michael Jackson) and sends it to JustEar Media Server. You can play the stream below and hear Adele on the left, Michael Jackson on the right. Use your headphones to hear audio clearly in different channels. </p>
+<p>Esta demo mezcla dos audios (Adele & Michael Jackson) en un único audio estereo (izda Adele, drcha Michael Jackson) and lo envia al servidor JustEar. Pues reproducir el audio pulsando el boton de abajo, escuchando Adele en izquierda, Michael Jackson en la derecha. Usa auriculares para escuchar claramente el audio en distintos canales. </p>
 
 <br/>
 <ol>
 
-  <li>Click the "Publish" button to publish local audio to JustEar Media Server<br/></li><br/>
-<audio id="merged_audio" autoplay="false" controls muted ></audio>
-<br/>
-<p id="status_label">Status:Offline</p>
-<button id="publish_audio_button">Publish</button> 
-<br/>
-
-<br/>
-  <li>Click the "Play" button to play remote audio coming from JustEar Media Server<br/></li>
-<audio id="remote_audio" autoplay="true" controls></audio>
-<br/>
-<br/>
-<button id="play_audio_button">Play</button>
+  <li>Pulsa botón "Publish" para publicar audio mezclado en servidor JustEar<br/></li><br/>
+  <audio id="merged_audio" autoplay="false" controls muted ></audio>
+  <br/>
+  <p id="status_label">Status:Offline</p>
+  <button id="publish_audio_button">Publish</button> 
+  <br/>
+  <br/>
+  <li>Pulsa botón "Play" para reproducir audio publicado desde servidor JustEar<br/></li>
+  <audio id="remote_audio" autoplay="true" controls></audio>
+  <br/>
+  <br/>
+  <button id="play_audio_button">Play</button>
  
-
-<p>Use your headphones to listen audio in different channels</d>
-<p>
-<a href="https://just-ear.com">just-ear.com</a>
-</p>
- </ol>
-<!-- partial -->
+  <p>Usa tus auriculares para escuchar audio en los diferentes canales</d>
+  <p>
+  <a href="https://just-ear.com">just-ear.com</a>
+  </p>
+</ol>
+  <!-- comments -->
   <script type="module" src="./demo.js"></script>
 
 </body>
