@@ -4,12 +4,17 @@ import {WebRTCAdaptor} from "https://cdn.skypack.dev/@antmedia/webrtc_adaptor";
 //The URL where you publish and play the stream
 let websocketURL = "wss://ovh36.antmedia.io:5443/WebRTCAppEE/websocket"
 let streamId = "JE" + parseInt(Math.random()*999999);
-var webRTCAdaptorPublisher;
-var webRTCAdaptorPlayer;
+let webRTCAdaptorPublisher;
+let webRTCAdaptorPlayer;
 
-var publish_audio_button = document.getElementById("publish_audio_button");
-var play_audio_button = document.getElementById("play_audio_button");
-var status_label = document.getElementById("status_label");
+let publish_audio_button = document.getElementById("publish_audio_button");
+let play_audio_button = document.getElementById("play_audio_button");
+let status_label = document.getElementById("status_label");
+let compartir_label = document.getElementById("compartir_label");
+
+//
+let docURL = document.URL;
+console.log(docURL);
 
 //configurar emisor/receptor con parámetros URL
 //* Emisor(sin parametro)    /demo.html
@@ -109,7 +114,9 @@ function publish(stream) {
 					} else if (info == "publish_started") {
 						//stream is being published
 						console.log("publish started");
-            status_label.innerText = "Status:Publishing "+streamId;
+            status_label.innerText = "Status:Publishing";
+            compartir_label.href = docURL+"?s="+streamId;
+//						compartir_label.target = "_blank";  //abrir en otra pestaña
             publish_audio_button.innerText = "Stop Publishing"
 						play_audio_button.disabled = false;
 					} else if (info == "publish_finished") {
