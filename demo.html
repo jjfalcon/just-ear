@@ -18,6 +18,7 @@
       list-style-type: none;
     }
     li {
+      text-align: center;
       margin-bottom: 10px;
     }
     audio {
@@ -43,25 +44,24 @@
 <body>
 <!-- comments -->
 <h2>JustEar Demo</h2>
-<p>Esta demo mezcla dos audios (Adele & Michael Jackson) en un único audio estereo (izda Adele, drcha Michael Jackson) and lo envia al servidor JustEar. Pues reproducir el audio pulsando el boton de abajo, escuchando Adele en izquierda, Michael Jackson en la derecha. Usa auriculares para escuchar claramente el audio en distintos canales. </p>
+<p>Esta demo mezcla en cliente 2 audios (izda Adele y drcha Michael Jackson) y lo envia al servidor JustEar.</p>
 
 <br/>
 <ol>
 
-  <li>Pulsa botón "Publish" para publicar audio mezclado en servidor JustEar<br/></li><br/>
-  <audio id="merged_audio" autoplay="false" controls muted ></audio>
-  <br/>
+  <li>Pulsa "Publish" para emitir audio al servidor JustEar<br/></li><br/>
+  <audio id="merged_audio" autoplay="false" muted ></audio>
   <p id="status_label">Status:Offline</p>
   <button id="publish_audio_button">Publish</button> 
   <br/>
-  <br/>
-  <li>Pulsa botón "Play" para reproducir audio publicado desde servidor JustEar<br/></li>
+  <li>Pulsa "Play" para reproducir audio del servidor JustEar<br/></li>
   <audio id="remote_audio" autoplay="true" controls></audio>
-  <br/>
   <br/>
   <button id="play_audio_button">Play</button>
  
   <p>Usa tus auriculares para escuchar audio en los diferentes canales</d>
+  <br/>
+  <br/>
   <p>
   <a href="https://just-ear.com">just-ear.com</a>
   </p>
