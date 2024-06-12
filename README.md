@@ -24,6 +24,7 @@ La web se ha desarrollado con la aplicación Mobirise 5.4.1. instalada en window
  
 ## Desarrollo APP
 * [Audio Player](https://codepen.io/sanketbodke/pen/dydzXwO)
+* [Mini Music Player](https://codepen.io/JavaScriptJunkie/pen/qBWrRyg)
 * [How to Publish and Play Two Audio Streams in JavaScript](https://github.com/orgs/ant-media/discussions/5368)
 * [Audio Recorder and Visualizer](https://codepen.io/eddch/pen/ZMOjPL)
 * [Audio Recording Demo](https://codepen.io/ralzohairi/pen/zYrKLWy) Icono de microfono, grabar, parar/reproducir, cancelar
@@ -44,7 +45,9 @@ La web se ha desarrollado con la aplicación Mobirise 5.4.1. instalada en window
 * [PWA. Service Worker with Update](https://codepen.io/tlissak/pen/abZeJxw)
 
 * [Aprende a usar CodePen](https://www.youtube.com/watch?v=OrZWmkQX5O0&ab_channel=JaviNiguez)
-
+* [Share button](https://codepen.io/onediv/pen/ZEjNqb)
+* [Login](https://codepen.io/marcobiedermann/pen/nbpKWV)
+* [Loading Icons](https://codepen.io/aurer/pen/ZEJxpO)
 
 ## Alternativas IA
 * [Dorik AI](https://dorik.com/) Crea un sitio web completo con un simple prompt y edítalo sin escribir una sola línea de código.
