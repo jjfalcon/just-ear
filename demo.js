@@ -40,6 +40,22 @@ publish_audio_button.addEventListener("click", () => {
   }
 });
 
+//https://dribbble.com/shots/5308631-Voice-recorder
+const micContainer = document.getElementsByClassName('mic-container')[0];
+micContainer.addEventListener('click', (e)=> {
+  let elem = e.target;
+  elem.classList.toggle('active');
+
+	console.log("publish audio button is clicked");
+  if (publish_audio_button.innerText == "Publish") {
+	  mergeAndPublishAudio();
+  }
+  else {
+    webRTCAdaptorPublisher.stop(streamId);
+  }
+
+});
+
 play_audio_button.addEventListener("click", ()=> {
 	console.log("play audio button is clicked");
   if (play_audio_button.innerText == "Play") {
