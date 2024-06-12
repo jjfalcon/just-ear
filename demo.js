@@ -11,8 +11,9 @@ let publish_audio_button = document.getElementById("publish_audio_button");
 let play_audio_button = document.getElementById("play_audio_button");
 let status_label = document.getElementById("status_label");
 let compartir_label = document.getElementById("compartir_label");
+const micContainer = document.getElementById('mic-container');
+const playContainer = document.getElementById('play-container');
 
-//
 let docURL = document.URL;
 console.log(docURL);
 
@@ -23,11 +24,15 @@ publish_audio_button.disabled = true;
 play_audio_button.disabled = true;
 const valores = window.location.search;
 const urlParams = new URLSearchParams(valores);
-if (urlParams.has('s')) {
+const isPlayer = urlParams.has('s');
+if (isPlayer) {
 	streamId = urlParams.get('s');
 	play_audio_button.disabled = false;
+	play_audio_button.style.visibility = 'visible';
+	playContainer.style.visibility = 'visible';
 } else {
 	publish_audio_button.disabled = false;
+	micContainer.style.visibility = 'visible';
 }
 
 publish_audio_button.addEventListener("click", () => {
@@ -41,7 +46,8 @@ publish_audio_button.addEventListener("click", () => {
 });
 
 //https://dribbble.com/shots/5308631-Voice-recorder
-const micContainer = document.getElementsByClassName('mic-container')[0];
+//const micContainer = document.getElementsByClassName('mic-container')[0];
+//const micContainer = document.getElementById('mic-container');
 micContainer.addEventListener('click', (e)=> {
   let elem = e.target;
   elem.classList.toggle('active');
@@ -68,7 +74,7 @@ play_audio_button.addEventListener("click", ()=> {
 
 
 //https://dribbble.com/shots/5308631-Voice-recorder
-const playContainer = document.getElementById('play-container');
+//const playContainer = document.getElementById('play-container');
 console.log(playContainer);
 playContainer.addEventListener('click', (e)=> {
   console.log("playContainer is clicked");
