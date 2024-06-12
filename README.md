@@ -44,7 +44,7 @@ La web se ha desarrollado con la aplicación Mobirise 5.4.1. instalada en window
 * [PWA. Service Worker with Update](https://codepen.io/tlissak/pen/abZeJxw)
 
 * [Aprende a usar CodePen](https://www.youtube.com/watch?v=OrZWmkQX5O0&ab_channel=JaviNiguez)
-
+* [Share button](https://codepen.io/onediv/pen/ZEjNqb)
 
 ## Alternativas IA
 * [Dorik AI](https://dorik.com/) Crea un sitio web completo con un simple prompt y edítalo sin escribir una sola línea de código.
