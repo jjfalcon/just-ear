@@ -1,13 +1,24 @@
-//TODO
+//TODO MVP 1.0 DEMO Emisor/Receptores. Permite usar funcionalidad principal de emitir/recibir audio
+//2024.06.12 Google Icons. Codepen.io(Iconos) Font Awesome
 //* usar misma pantalla para publicar/reproducir un solo boton
 //* reproducir micro en tiempo real
 //* incluir botón compartir nativo
 //* incluir visualizacion grafica de audio en grafica de barras
 //* seleccionar canal de entrada (micro, fichero, reproduccion, linea de entrada aux.)
-//* login https://codepen.io/marcobiedermann/pen/nbpKWV
-
-//DONE
-//2024.06.12 Google Icons. Codepen.io(Iconos) Font Awesome
+//* configurar PWA nativa
+//TODO MVP 2.0 PLATAFORMA. Permite usar plataforma y monetizar SAAS
+//* login emisor https://codepen.io/marcobiedermann/pen/nbpKWV
+//* login receptor
+//* configurar usuario, y parametros emision (titulo, subtitulos, guardar, canal publico)
+//* configurar receptor, y parametros receptor (guardados, favoritos, etc)
+//* guardar audios de ultima semana publicados 
+//* guardar audios favoritos de usuario
+//TODO MVP 3.0 AUDIO MEJORADO. Permite funcionalidades mejoradas para usuarios
+//* mejorar audio de envio en cliente
+//* ajustar audio de reproduccion al usuario (ajustar frecuencias)
+//* incluir subtitulos en tiempo real (whisper) 
+//* incluir traducción simultanea a distintos idiomas
+//* incluir elementos multimedia (texto, imagenes, video, etc)
 
 console.log("js start");
 import {WebRTCAdaptor} from "https://cdn.skypack.dev/@antmedia/webrtc_adaptor";
@@ -91,18 +102,12 @@ playContainer.addEventListener('click', (e)=> {
   console.log("playContainer is clicked");
   let elem = e.target;
 
-/*
-  if(elem.classList.contains("active"))
-	{
-		elem.classList.remove('fa-pause');
-		elem.classList.add('fa-play');
-		//audio.pause();
-	} else {
-		elem.classList.remove('fa-play');
-		elem.classList.add('fa-pause');
-		//audio.play();
-  }
-*/
+  if (play_audio_button.innerText == "Play") {
+		play();
+ }
+ else {
+	 webRTCAdaptorPlayer.stop(streamId);
+ }
 
   elem.classList.toggle('active');
 	console.log(elem.classList);
