@@ -46,7 +46,7 @@ micContainer.addEventListener('click', (e)=> {
   let elem = e.target;
   elem.classList.toggle('active');
 
-	console.log("publish audio button is clicked");
+	console.log("publishContainer is clicked");
   if (publish_audio_button.innerText == "Publish") {
 	  mergeAndPublishAudio();
   }
@@ -66,6 +66,38 @@ play_audio_button.addEventListener("click", ()=> {
   }
 });
 
+
+//https://dribbble.com/shots/5308631-Voice-recorder
+const playContainer = document.getElementById('play-container');
+console.log(playContainer);
+playContainer.addEventListener('click', (e)=> {
+  console.log("playContainer is clicked");
+  let elem = e.target;
+
+/*
+  if(elem.classList.contains("active"))
+	{
+		elem.classList.remove('fa-pause');
+		elem.classList.add('fa-play');
+		//audio.pause();
+	} else {
+		elem.classList.remove('fa-play');
+		elem.classList.add('fa-pause');
+		//audio.play();
+  }
+*/
+
+  elem.classList.toggle('active');
+	console.log(elem.classList);
+ });
+
+ 
+/*
+audio.onended = function() {
+     $("#play-pause-button").removeClass('fa-pause');
+     $("#play-pause-button").addClass('fa-play');
+};
+*/
 function mergeAndPublishAudio() {
 
 			const mergedAudio = document.getElementById('merged_audio');
