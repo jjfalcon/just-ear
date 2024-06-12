@@ -1,3 +1,14 @@
+//TODO
+//* usar misma pantalla para publicar/reproducir un solo boton
+//* reproducir micro en tiempo real
+//* incluir botón compartir nativo
+//* incluir visualizacion grafica de audio en grafica de barras
+//* seleccionar canal de entrada (micro, fichero, reproduccion, linea de entrada aux.)
+//* login https://codepen.io/marcobiedermann/pen/nbpKWV
+
+//DONE
+//2024.06.12 Google Icons. Codepen.io(Iconos) Font Awesome
+
 console.log("js start");
 import {WebRTCAdaptor} from "https://cdn.skypack.dev/@antmedia/webrtc_adaptor";
 
@@ -240,5 +251,21 @@ function play() {
 				}
 			});
 }
+
+/*
+//Compartir de forma nativa desde web mediante Click sobre elemento Share
+var nativeShare = function() {
+  if (navigator.share) {
+    navigator.share({ title: "JustEar", text: "Player", url: docURL+"?s="+streamId })
+  }
+  return false;
+}
+
+let share = document.getElementById("Share");
+share.addEventListener("click", () => {
+	console.log("Share is clicked");
+  nativeShare();
+});
+*/
 
 console.log("js end");
