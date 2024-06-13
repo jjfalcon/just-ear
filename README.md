@@ -29,6 +29,7 @@ La web se ha desarrollado con la aplicación Mobirise 5.4.1. instalada en window
 * [Audio Recorder and Visualizer](https://codepen.io/eddch/pen/ZMOjPL)
 * [Audio Recording Demo](https://codepen.io/ralzohairi/pen/zYrKLWy) Icono de microfono, grabar, parar/reproducir, cancelar
 * [Voice Recording Demo](https://codepen.io/winrey/pen/xvxrxR)
+* [Visualizations with Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Visualizations_with_Web_Audio_API)
 * [Voice recorder animation](https://codepen.io/michalzet/pen/oJremG)
 * [Audio recorder Animation](https://codepen.io/benhatsor/pen/LYVJKPW)
 * [MP3 Audio Recorder](https://codepen.io/naveedhuq/pen/QWVPybW)
@@ -48,6 +49,13 @@ La web se ha desarrollado con la aplicación Mobirise 5.4.1. instalada en window
 * [Share button](https://codepen.io/onediv/pen/ZEjNqb)
 * [Login](https://codepen.io/marcobiedermann/pen/nbpKWV)
 * [Loading Icons](https://codepen.io/aurer/pen/ZEJxpO)
+
+### Tratamiento de audio
+* [Web Audio API and WebRTC](https://stackoverflow.com/questions/18852776/web-audio-api-and-webrtc)
+* [Cómo eliminar el ruido de fondo del audio [10 herramientas]](https://geekflare.com/es/remove-background-noise-from-audio-tools/)
+* [Cómo eliminar ruido en audio gratis ¡con Inteligencia Artificial!](https://www.youtube.com/watch?v=QDb-g6eFhGo&ab_channel=Creatubers)
+* [Elimina ruido de audio online con IA](https://myedit.online/es/audio-editor/remove-background-noise-from-audio)
+* [Insertar y eliminar sonido con javascript en una página web](https://francescricart.com/insertar-y-eliminar-sonido-con-javascript-en-una-pagina-web/)
 
 ## Alternativas IA
 * [Dorik AI](https://dorik.com/) Crea un sitio web completo con un simple prompt y edítalo sin escribir una sola línea de código.
