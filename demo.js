@@ -6,6 +6,7 @@
 //* incluir visualizacion grafica de audio en grafica de barras
 //* seleccionar canal de entrada (micro, fichero, reproduccion, linea de entrada aux.)
 //* configurar PWA nativa
+
 //TODO MVP 2.0 PLATAFORMA. Permite usar plataforma y monetizar SAAS
 //* login emisor https://codepen.io/marcobiedermann/pen/nbpKWV
 //* login receptor
@@ -13,10 +14,12 @@
 //* configurar receptor, y parametros receptor (guardados, favoritos, etc)
 //* guardar audios de ultima semana publicados 
 //* guardar audios favoritos de usuario
+
 //TODO MVP 3.0 AUDIO MEJORADO. Permite funcionalidades mejoradas para usuarios
 //* mejorar audio de envio en cliente
-//* ajustar audio de reproduccion al usuario (ajustar frecuencias)
+//* mejorar audio de reproduccion al usuario (frecuencias, ruido, silencio, velocidad)
 //* incluir subtitulos en tiempo real (whisper) 
+//* incluir text2audio de subitulos para mejorar sonido 
 //* incluir traducción simultanea a distintos idiomas
 //* incluir elementos multimedia (texto, imagenes, video, etc)
 
@@ -47,6 +50,8 @@ play_audio_button.disabled = true;
 const valores = window.location.search;
 const urlParams = new URLSearchParams(valores);
 const isPlayer = urlParams.has('s');
+let isActive = false;
+
 if (isPlayer) {
 	streamId = urlParams.get('s');
 	play_audio_button.disabled = false;
@@ -57,69 +62,6 @@ if (isPlayer) {
 	micContainer.style.visibility = 'visible';
 }
 
-publish_audio_button.addEventListener("click", () => {
-	console.log("publish audio button is clicked");
-  if (publish_audio_button.innerText == "Publish") {
-	  mergeAndPublishAudio();
-  }
-  else {
-    webRTCAdaptorPublisher.stop(streamId);
-  }
-});
-
-//https://dribbble.com/shots/5308631-Voice-recorder
-//const micContainer = document.getElementsByClassName('mic-container')[0];
-//const micContainer = document.getElementById('mic-container');
-micContainer.addEventListener('click', (e)=> {
-  let elem = e.target;
-  elem.classList.toggle('active');
-
-	console.log("publishContainer is clicked");
-  if (publish_audio_button.innerText == "Publish") {
-	  mergeAndPublishAudio();
-  }
-  else {
-    webRTCAdaptorPublisher.stop(streamId);
-  }
-
-});
-
-play_audio_button.addEventListener("click", ()=> {
-	console.log("play audio button is clicked");
-  if (play_audio_button.innerText == "Play") {
-     play();
-  }
-  else {
-    webRTCAdaptorPlayer.stop(streamId);
-  }
-});
-
-
-//https://dribbble.com/shots/5308631-Voice-recorder
-//const playContainer = document.getElementById('play-container');
-console.log(playContainer);
-playContainer.addEventListener('click', (e)=> {
-  console.log("playContainer is clicked");
-  let elem = e.target;
-
-  if (play_audio_button.innerText == "Play") {
-		play();
- }
- else {
-	 webRTCAdaptorPlayer.stop(streamId);
- }
-
-  elem.classList.toggle('active');
-	console.log(elem.classList);
- });
-
- 
-/*
-audio.onended = function() {
-     $("#play-pause-button").removeClass('fa-pause');
-     $("#play-pause-button").addClass('fa-play');
-};
-*/
 function mergeAndPublishAudio() {
 
 			const mergedAudio = document.getElementById('merged_audio');
@@ -271,6 +213,79 @@ share.addEventListener("click", () => {
 	console.log("Share is clicked");
   nativeShare();
 });
+*/
+
+publish_audio_button.addEventListener("click", () => {
+	console.log("publish audio button is clicked");
+  if (publish_audio_button.innerText == "Publish") {
+	  mergeAndPublishAudio();
+  }
+  else {
+    webRTCAdaptorPublisher.stop(streamId);
+  }
+});
+
+//https://dribbble.com/shots/5308631-Voice-recorder
+//const micContainer = document.getElementsByClassName('mic-container')[0];
+//const micContainer = document.getElementById('mic-container');
+micContainer.addEventListener('click', (e)=> {
+  let elem = e.target;
+  elem.classList.toggle('active');
+
+	console.log("publishContainer is clicked");
+  if (publish_audio_button.innerText == "Publish") {
+	  mergeAndPublishAudio();
+  }
+  else {
+    webRTCAdaptorPublisher.stop(streamId);
+  }
+
+});
+
+play_audio_button.addEventListener("click", ()=> {
+	console.log("play audio button is clicked");
+  if (play_audio_button.innerText == "Play") {
+     play();
+  }
+  else {
+    webRTCAdaptorPlayer.stop(streamId);
+  }
+});
+
+
+//https://dribbble.com/shots/5308631-Voice-recorder
+//const playContainer = document.getElementById('play-container');
+console.log(playContainer);
+playContainer.addEventListener('click', (e)=> {
+  console.log("playContainer is clicked");
+  let elem = e.target;
+
+  if (play_audio_button.innerText == "Play") {
+		play();
+ }
+ else {
+	 webRTCAdaptorPlayer.stop(streamId);
+ }
+
+  elem.classList.toggle('active');
+	console.log(elem.classList);
+ });
+
+ const boton = document.getElementById('boton');
+ boton.addEventListener('click', (e)=> {
+  console.log("boton is clicked");
+  let elem = e.target;
+	elem.classList.toggle('active');
+
+	isActive = !isActive;
+
+});
+ 
+/*
+audio.onended = function() {
+     $("#play-pause-button").removeClass('fa-pause');
+     $("#play-pause-button").addClass('fa-play');
+};
 */
 
 console.log("js end");
