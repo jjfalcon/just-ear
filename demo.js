@@ -1,11 +1,11 @@
 //TODO MVP 1.0 DEMO Emisor/Receptores. Permite usar funcionalidad principal de emitir/recibir audio
 //2024.06.12 Google Icons. Codepen.io(Iconos) Font Awesome
-//* usar misma pantalla para publicar/reproducir un solo boton
+//2024.06.17 usar misma pantalla para publicar/reproducir un solo boton
 //* reproducir micro en tiempo real
+//* configurar PWA nativa
 //* incluir botón compartir nativo
 //* incluir visualizacion grafica de audio en grafica de barras
 //* seleccionar canal de entrada (micro, fichero, reproduccion, linea de entrada aux.)
-//* configurar PWA nativa
 
 //TODO MVP 2.0 PLATAFORMA. Permite usar plataforma y monetizar SAAS
 //* login emisor https://codepen.io/marcobiedermann/pen/nbpKWV
@@ -27,19 +27,46 @@
 console.log("js start");
 import {WebRTCAdaptor} from "https://cdn.skypack.dev/@antmedia/webrtc_adaptor";
 
+//Publish and Play Audio Streams in live
+//https://github.com/orgs/ant-media/discussions/5368
+//import {WebRTCAdaptor} from "https://cdn.skypack.dev/@antmedia/webrtc_adaptor@SNAPSHOT";
+var mediaConstraints = {
+		video: false,
+		audio: true
+	};
+//var websocketURL = "wss://test.antmedia.io/WebRTCAppEE/websocket"
+
 //The URL where you publish and play the stream
 let websocketURL = "wss://ovh36.antmedia.io:5443/WebRTCAppEE/websocket"
 let streamId = "JE" + parseInt(Math.random()*999999);
 let webRTCAdaptorPublisher;
 let webRTCAdaptorPlayer;
 
-//let publish_audio_button = document.getElementById("publish_audio_button");
-//let play_audio_button = document.getElementById("play_audio_button");
-//let status_label = document.getElementById("status_label");
-//let title_label =  document.getElementById("title_label");
+var webRTCAdaptorRecord = new WebRTCAdaptor ({
+	websocket_url: websocketURL,
+	mediaConstraints: mediaConstraints,
+	localVideoId: "local_audio",
+	debug: true,
+	callback: function (info, description) {
+		if (info == "initialized") {
+		} else if (info == "publish_started") {
+      compartir_label.href = docURL+"?s="+streamId;
+      compartir_label.style.visibility = "visible";
+		} else if (info == "publish_finished") {
+      compartir_label.style.visibility = "hidden";
+		}
+		else if (info == "closed") {
+		}
+	},
+	callbackError: function (error, message) {
+		//some of the possible errors, NotFoundError, SecurityError,PermissionDeniedError
+		alert("error: " + error + " message:" + message);
+	}
+});
+
+
 let audio_button = document.getElementById("audio_button");
 let compartir_label = document.getElementById("compartir_label");
-
 let docURL = document.URL;
 //console.log(docURL);
 
@@ -107,6 +134,8 @@ function mergeAndPublishAudio() {
 			});
 	});
 }
+
+
 
 function publish(stream) {
 	webRTCAdaptorPublisher = new WebRTCAdaptor({
@@ -288,13 +317,15 @@ audio_button.addEventListener('click', (e)=> {
 		if (isPlayer) {
 			play();
 		} else {
-			mergeAndPublishAudio();
+			//mergeAndPublishAudio();
+			webRTCAdaptorRecord.publish(streamId);
 		}
 	}	else {
 		if (isPlayer) {
 			webRTCAdaptorPlayer.stop(streamId);
 		}	else {
-    	webRTCAdaptorPublisher.stop(streamId);
+//    	webRTCAdaptorPublisher.stop(streamId);
+    	webRTCAdaptorRecord.stop(streamId);
 		}
 		audio_button_update();
 	}
