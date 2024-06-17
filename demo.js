@@ -22,6 +22,7 @@
 //* incluir text2audio de subitulos para mejorar sonido 
 //* incluir traducción simultanea a distintos idiomas
 //* incluir elementos multimedia (texto, imagenes, video, etc)
+//* incluir notificaciones con sonidos: detectar timbre puerta, portazo, alarma, etc...
 
 console.log("js start");
 import {WebRTCAdaptor} from "https://cdn.skypack.dev/@antmedia/webrtc_adaptor";
@@ -32,21 +33,21 @@ let streamId = "JE" + parseInt(Math.random()*999999);
 let webRTCAdaptorPublisher;
 let webRTCAdaptorPlayer;
 
-let publish_audio_button = document.getElementById("publish_audio_button");
-let play_audio_button = document.getElementById("play_audio_button");
-let status_label = document.getElementById("status_label");
+//let publish_audio_button = document.getElementById("publish_audio_button");
+//let play_audio_button = document.getElementById("play_audio_button");
+//let status_label = document.getElementById("status_label");
+//let title_label =  document.getElementById("title_label");
+let audio_button = document.getElementById("audio_button");
 let compartir_label = document.getElementById("compartir_label");
-const micContainer = document.getElementById('mic-container');
-const playContainer = document.getElementById('play-container');
 
 let docURL = document.URL;
-console.log(docURL);
+//console.log(docURL);
 
 //configurar emisor/receptor con parámetros URL
 //* Emisor(sin parametro)    /demo.html
 //* Receptor con parametro   /demo.html?s=JE616400
-publish_audio_button.disabled = true;
-play_audio_button.disabled = true;
+//publish_audio_button.disabled = true;
+//play_audio_button.disabled = true;
 const valores = window.location.search;
 const urlParams = new URLSearchParams(valores);
 const isPlayer = urlParams.has('s');
@@ -54,138 +55,131 @@ let isActive = false;
 
 if (isPlayer) {
 	streamId = urlParams.get('s');
-	play_audio_button.disabled = false;
-	play_audio_button.style.visibility = 'visible';
-	playContainer.style.visibility = 'visible';
-} else {
-	publish_audio_button.disabled = false;
-	micContainer.style.visibility = 'visible';
 }
 
 function mergeAndPublishAudio() {
 
-			const mergedAudio = document.getElementById('merged_audio');
+	const mergedAudio = document.getElementById('remote_audio');
 
-			// Create an AudioContext
-			const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+	// Create an AudioContext
+	const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-			// Create AudioBufferSourceNodes for each audio element
-			const source1 = audioContext.createBufferSource();
-			const source2 = audioContext.createBufferSource();
+	// Create AudioBufferSourceNodes for each audio element
+	const source1 = audioContext.createBufferSource();
+	const source2 = audioContext.createBufferSource();
 
-			const audioDestination = audioContext.createMediaStreamDestination();
+	const audioDestination = audioContext.createMediaStreamDestination();
 
-			// Load audio data from the audio elements
-			const audio1Url = "https://mekya.github.io/samples/stereo/adele_audio_mono.mp3";
-			const audio2Url = "https://mekya.github.io/samples/stereo/michael_jackson_audio_mono.mp3";
+	// Load audio data from the audio elements
+	const audio1Url = "https://mekya.github.io/samples/stereo/adele_audio_mono.mp3";
+	const audio2Url = "https://mekya.github.io/samples/stereo/michael_jackson_audio_mono.mp3";
 
-			fetch(audio1Url)
-				.then(response => response.arrayBuffer())
-				.then(buffer => audioContext.decodeAudioData(buffer))
-				.then(decodedData => {
-					// Set the audio data for the first source node
-					source1.buffer = decodedData;
+	fetch(audio1Url)
+	.then(response => response.arrayBuffer())
+	.then(buffer => audioContext.decodeAudioData(buffer))
+	.then(decodedData => {
+		// Set the audio data for the first source node
+		source1.buffer = decodedData;
 
-					fetch(audio2Url)
-						.then(response => response.arrayBuffer())
-						.then(buffer => audioContext.decodeAudioData(buffer))
-						.then(decodedData => {
-							// Set the audio data for the second source node
-							source2.buffer = decodedData;
-							//source2.connect(audioDestination);
+		fetch(audio2Url)
+			.then(response => response.arrayBuffer())
+			.then(buffer => audioContext.decodeAudioData(buffer))
+			.then(decodedData => {
+				// Set the audio data for the second source node
+				source2.buffer = decodedData;
+				//source2.connect(audioDestination);
 
-							// Create a ChannelMergerNode to merge the audio sources
-							const merger = audioContext.createChannelMerger(2);
+				// Create a ChannelMergerNode to merge the audio sources
+				const merger = audioContext.createChannelMerger(2);
 
-							// Connect the sources to the merger
-							source1.connect(merger, 0, 0);
-							source2.connect(merger, 0, 1);
+				// Connect the sources to the merger
+				source1.connect(merger, 0, 0);
+				source2.connect(merger, 0, 1);
 
-							// Connect the merger to the destination (speakers/headphones)
-							//merger.connect(audioDestination);
-							merger.connect(audioDestination);
-							mergedAudio.srcObject = audioDestination.stream;
+				// Connect the merger to the destination (speakers/headphones)
+				//merger.connect(audioDestination);
+				merger.connect(audioDestination);
+				mergedAudio.srcObject = audioDestination.stream;
 
-							source1.start(0);
-							source2.start(0);
-							publish(audioDestination.stream);
-						});
-				});
-}
-function publish(stream) {
-
-			webRTCAdaptorPublisher = new WebRTCAdaptor({
-				websocket_url: websocketURL,
-				localStream: stream,
-				debug: true,
-				callback: function (info, description) {
-					if (info == "initialized") {
-						console.log("publish initialized");
-						publish_audio_button.disabled = false;
-						webRTCAdaptorPublisher.publish(streamId);
-					} else if (info == "publish_started") {
-						//stream is being published
-						console.log("publish started");
-            status_label.innerText = "Status:Publishing";
-            compartir_label.href = docURL+"?s="+streamId;
-//						compartir_label.target = "_blank";  //abrir en otra pestaña
-            publish_audio_button.innerText = "Stop Publishing"
-						play_audio_button.disabled = false;
-					} else if (info == "publish_finished") {
-						//stream is being finished
-						console.log("publish finished");
-            status_label.innerText = "Status:Offline";
-            publish_audio_button.innerText = "Publish"
-						publish_audio_button.disabled = false;
-            play_audio_button.disabled = true;
-					}
-          else if (info == "play_started"){
-						console.log("publish play started");
-            play_audio_button.innerText = "Stop Playing";
-          }
-          else if (info == "play_finished") {
-						console.log("publish play finished");
-            play_audio_button.innerText = "Play";
-          }
-					else if (info == "closed") {
-            play_audio_button.disabled = true
-            publish_audio_button.disabled = true;
-						console.log("publish closed");
-						if (typeof description != "undefined") {
-							console.log("publish connection closed: " + JSON.stringify(description));
-						}
-					}
-				},
-				callbackError: function (error, message) {
-					//some of the possible errors, NotFoundError, SecurityError,PermissionDeniedError
-           console.log("publish error is " + error + " message: " + message);
-					//errorHandler(error, message);
-				}
+				source1.start(0);
+				source2.start(0);
+				publish(audioDestination.stream);
 			});
+	});
+}
+
+function publish(stream) {
+	webRTCAdaptorPublisher = new WebRTCAdaptor({
+		websocket_url: websocketURL,
+		localStream: stream,
+		debug: true,
+		callback: function (info, description) {
+			console.log("RecordRTC: "+info);
+			if (info == "initialized") {
+//						console.log("publish initialized");
+//						publish_audio_button.disabled = false;
+				webRTCAdaptorPublisher.publish(streamId);
+			} else if (info == "publish_started") {
+				//stream is being published
+//						console.log("publish started");
+//            status_label.innerText = "Status:Publishing";
+				compartir_label.href = docURL+"?s="+streamId;
+				compartir_label.style.visibility = "visible";
+//						compartir_label.target = "_blank";  //abrir en otra pestaña
+//            publish_audio_button.innerText = "Stop Publishing"
+//						play_audio_button.disabled = false;
+			} else if (info == "publish_finished") {
+				//stream is being finished
+				compartir_label.style.visibility = "hidden";
+			}
+			else if (info == "play_started"){
+//						console.log("publish play started");
+//            play_audio_button.innerText = "Stop Playing";
+			}
+			else if (info == "play_finished") {
+//						console.log("publish play finished");
+//            play_audio_button.innerText = "Play";
+			}
+			else if (info == "closed") {
+//            play_audio_button.disabled = true
+//            publish_audio_button.disabled = true;
+//						console.log("publish closed");
+				if (typeof description != "undefined") {
+					console.log("publish connection closed: " + JSON.stringify(description));
+				}
+			}
+		},
+		callbackError: function (error, message) {
+			//some of the possible errors, NotFoundError, SecurityError,PermissionDeniedError
+				console.log("publish error is " + error + " message: " + message);
+			//errorHandler(error, message);
 		}
+	});
+}
 
 function play() {
   webRTCAdaptorPlayer = new WebRTCAdaptor({
 				websocket_url: websocketURL,
-				remoteVideoElement: document.getElementById("remote_audio"),
+				remoteVideoElement: document.getElementById("play_audio"),
 				debug: true,
         isPlayMode : true,
 				callback: function (info, description) {
+//					console.log("PlayRTC: "+info);
 					if (info == "initialized") {
-						console.log("play initialized");
+//						console.log("play initialized");
             webRTCAdaptorPlayer.play(streamId);
 					}
           else if (info == "play_started"){
-						console.log("play started");
-            play_audio_button.innerText = "Stop Playing";
+//						console.log("play started");
+//            play_audio_button.innerText = "Stop Playing";
           }
           else if (info == "play_finished") {
-						console.log("play finished");
-            play_audio_button.innerText = "Play";
+//						console.log("play finished");
+//            play_audio_button.innerText = "Play";
           }
 					else if (info == "closed") {
-            play_audio_button.disabled = true
-						console.log("play closed");
+//            play_audio_button.disabled = true
+//						console.log("play closed");
 						if (typeof description != "undefined") {
 							console.log("play connection closed: " + JSON.stringify(description));
 						}
@@ -213,7 +207,7 @@ share.addEventListener("click", () => {
 	console.log("Share is clicked");
   nativeShare();
 });
-*/
+
 
 publish_audio_button.addEventListener("click", () => {
 	console.log("publish audio button is clicked");
@@ -224,7 +218,8 @@ publish_audio_button.addEventListener("click", () => {
     webRTCAdaptorPublisher.stop(streamId);
   }
 });
-
+*/
+/*
 //https://dribbble.com/shots/5308631-Voice-recorder
 //const micContainer = document.getElementsByClassName('mic-container')[0];
 //const micContainer = document.getElementById('mic-container');
@@ -241,7 +236,8 @@ micContainer.addEventListener('click', (e)=> {
   }
 
 });
-
+*/
+/*
 play_audio_button.addEventListener("click", ()=> {
 	console.log("play audio button is clicked");
   if (play_audio_button.innerText == "Play") {
@@ -251,7 +247,6 @@ play_audio_button.addEventListener("click", ()=> {
     webRTCAdaptorPlayer.stop(streamId);
   }
 });
-
 
 //https://dribbble.com/shots/5308631-Voice-recorder
 //const playContainer = document.getElementById('play-container');
@@ -270,22 +265,40 @@ playContainer.addEventListener('click', (e)=> {
   elem.classList.toggle('active');
 	console.log(elem.classList);
  });
-
- const boton = document.getElementById('boton');
- boton.addEventListener('click', (e)=> {
-  console.log("boton is clicked");
-  let elem = e.target;
-	elem.classList.toggle('active');
-
-	isActive = !isActive;
-
-});
- 
-/*
-audio.onended = function() {
-     $("#play-pause-button").removeClass('fa-pause');
-     $("#play-pause-button").addClass('fa-play');
-};
 */
+/*** AUDIO_BUTTON ****************************************************/
+ function audio_button_update() {
+	if (isPlayer) {	
+		audio_button.innerText = "Play";
+  } else { 
+		audio_button.innerText = "Record"
+  }
+}
+audio_button_update();
+audio_button.style.visibility = "visible"
+//title_label.style.visibility = "visible"
+
+audio_button.addEventListener('click', (e)=> {
+//  console.log("audio_button is clicked");
+//  let elem = e.target;
+
+  isActive = !isActive;
+	if (isActive)	{
+		audio_button.innerText = "Stop....";
+		if (isPlayer) {
+			play();
+		} else {
+			mergeAndPublishAudio();
+		}
+	}	else {
+		if (isPlayer) {
+			webRTCAdaptorPlayer.stop(streamId);
+		}	else {
+    	webRTCAdaptorPublisher.stop(streamId);
+		}
+		audio_button_update();
+	}
+});
+
 
 console.log("js end");

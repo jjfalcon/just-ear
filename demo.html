@@ -91,36 +91,15 @@
 <body>
 <!-- comments -->
 <h2>JustEar Demo</h2>
-<p>Esta demo publica y reproduce audio (izda Adele y drcha Michael Jackson).</p>
-  <ol>
-  <li>"Publish" emite audio<br/></li><br/>
-  <audio id="merged_audio" autoplay="false" muted ></audio>
-  <p><span id="status_label">Status:Offline </span>
-     <a id="compartir_label" target="_blank" href="https://just-ear.com">Compartir Audio</a>
-  </p>
-  <button id="publish_audio_button">Publish</button> 
-  <div class="mic-container" id="mic-container" style="visibility: hidden">
-    <div class="circle">
-      <i class="fas fa-microphone"></i>
-    </div>
-  </div>
-  <div class="mic-container" id="boton">
-    <div class="circle">
-      <i class="fas fa-play"></i>
-    </div>
-  </div>
-  <br/>
-  <li>"Play" reproduce audio<br/></li>
-  <audio id="remote_audio" autoplay="true" controls></audio>
-  <button id="play_audio_button">Play</button>
-  
-  <div class="mic-container" id="play-container" style="visibility: hidden">
-    <div class="circle">
-      <i class="fas fa-microphone"></i>
-    </div>
-  </div>
 
+  <audio id="remote_audio" autoplay="false" muted></audio>
+  <audio id="play_audio" autoplay="false" ></audio>
   
+  <button id="audio_button" style="visibility: hidden">Record </button> 
+  <p>
+    <a id="compartir_label" style="visibility: hidden" target="_blank" href="https://just-ear.com">Compartir Audio</a>
+  </p>
+
   <p>
   <a href="https://just-ear.com">just-ear.com</a>
   </p>
