@@ -36,6 +36,7 @@ La web se ha desarrollado con la aplicación Mobirise 5.4.1. instalada en window
 
 * [Web RTC - Sound and Microphone Check](https://codepen.io/rhamses/pen/BaNgxNz)
 * [Camara y microfono](https://codepen.io/feralninja/pen/oLOdop)
+* [Web Audio API and WebRTC - Stack Overflow](https://stackoverflow.com/questions/18852776/web-audio-api-and-webrtc)
 
 * [PWA. Creando una PWA](https://www.youtube.com/watch?v=HZURIHU92ks&ab_channel=KevinDavila)
 * [PWA. Demo adaptacion](https://chatgpt.com/c/dda6efd4-54ad-4b88-a41a-3840e19c679f)
