@@ -42,6 +42,22 @@ let streamId = "JE" + parseInt(Math.random()*999999);
 let webRTCAdaptorPublisher;
 let webRTCAdaptorPlayer;
 
+//*** Boton para compartir de forma nativa ****************************
+var nativeShare = function() {
+  if (navigator.share) {
+    navigator.share({ title: "JustEar", text: "Player", url: docURL+"?s="+streamId })
+  }
+  return false;
+}
+
+let share = document.getElementById("share");
+//share.style.visibility = "visible";
+share.addEventListener("click", () => {
+	console.log("Share is clicked");
+  nativeShare();
+});
+
+//*** AUDIO LOCAL LIVE *************************************************
 var webRTCAdaptorRecord = new WebRTCAdaptor ({
 	websocket_url: websocketURL,
 	mediaConstraints: mediaConstraints,
@@ -222,21 +238,6 @@ function play() {
 				}
 			});
 }
-
-//*** Boton para compartir de forma nativa ****************************
-var nativeShare = function() {
-  if (navigator.share) {
-    navigator.share({ title: "JustEar", text: "Player", url: docURL+"?s="+streamId })
-  }
-  return false;
-}
-
-let share = document.getElementById("share");
-//share.style.visibility = "visible";
-share.addEventListener("click", () => {
-	console.log("Share is clicked");
-  nativeShare();
-});
 
 /*** AUDIO_BUTTON ****************************************************/
 function audio_button_update() {
