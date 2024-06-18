@@ -3,7 +3,7 @@
 //2024.06.17 usar misma pantalla para publicar/reproducir un solo boton
 //2024.06.17 reproducir micro en tiempo real
 //2024.06.18 configurar PWA nativa
-//* incluir botón compartir nativo
+//2024.06.18 incluir botón compartir nativo
 //* incluir visualizacion grafica de audio en grafica de barras
 //* seleccionar canal de entrada (micro, fichero, reproduccion, linea de entrada aux.)
 
@@ -52,8 +52,10 @@ var webRTCAdaptorRecord = new WebRTCAdaptor ({
 		} else if (info == "publish_started") {
       compartir_label.href = docURL+"?s="+streamId;
       compartir_label.style.visibility = "visible";
+      share.style.visibility = "visible";
 		} else if (info == "publish_finished") {
       compartir_label.style.visibility = "hidden";
+      share.style.visibility = "hidden";
 		}
 		else if (info == "closed") {
 		}
@@ -221,8 +223,7 @@ function play() {
 			});
 }
 
-/*
-//Compartir de forma nativa desde web mediante Click sobre elemento Share
+//*** Boton para compartir de forma nativa ****************************
 var nativeShare = function() {
   if (navigator.share) {
     navigator.share({ title: "JustEar", text: "Player", url: docURL+"?s="+streamId })
@@ -230,14 +231,15 @@ var nativeShare = function() {
   return false;
 }
 
-let share = document.getElementById("Share");
+let share = document.getElementById("share");
+//share.style.visibility = "visible";
 share.addEventListener("click", () => {
 	console.log("Share is clicked");
   nativeShare();
 });
 
 /*** AUDIO_BUTTON ****************************************************/
- function audio_button_update() {
+function audio_button_update() {
 	if (isPlayer) {	
 		audio_button.innerText = "Play";
   } else { 
@@ -246,12 +248,8 @@ share.addEventListener("click", () => {
 }
 audio_button_update();
 audio_button.style.visibility = "visible"
-//title_label.style.visibility = "visible"
 
 audio_button.addEventListener('click', (e)=> {
-//  console.log("audio_button is clicked");
-//  let elem = e.target;
-
   isActive = !isActive;
 	if (isActive)	{
 		audio_button.innerText = "Stop....";
@@ -272,7 +270,7 @@ audio_button.addEventListener('click', (e)=> {
 	}
 });
 
-//PWA service-worker
+//*** PWA service-worker*******************************************
 if ('serviceWorker' in navigator) {
 	window.addEventListener('load', () => {
 		navigator.serviceWorker.register('/service-worker.js')
