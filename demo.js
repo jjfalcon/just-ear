@@ -4,7 +4,7 @@
 //2024.06.17 reproducir micro en tiempo real
 //2024.06.18 configurar PWA nativa
 //2024.06.18 incluir botón compartir nativo
-//* incluir visualizacion grafica de audio en grafica de barras
+//2024.06.18 incluir visualizacion grafica de audio en grafica de barras
 //* seleccionar canal de entrada (micro, fichero, reproduccion, linea de entrada aux.)
 
 //TODO MVP 2.0 PLATAFORMA. Permite usar plataforma y monetizar SAAS
@@ -288,7 +288,52 @@ if ('serviceWorker' in navigator) {
 //https://smilecomunicacion.com/notificaciones-push/
 //https://medium.com/@greennolgaa/push-notifications-in-javascript-the-comprehensive-guide-6757f2f8ea98
 
+//*** AUDIO INPUTs device *****************************************
+//JS Audio Input Reader
+//https://codepen.io/eddch/pen/ZMOjPL
+(async () => {
+  let micSelect = document.getElementById('micSelect');
+  let stream = null;
+
+	try {
+    window.stream = stream = await getStream();
+    console.log('Got stream');  
+  } catch(err) {
+    alert('Issue getting mic', err);
+  }
+
+  const deviceInfos = await navigator.mediaDevices.enumerateDevices();
+  
+  var mics = [];
+  for (let i = 0; i !== deviceInfos.length; ++i) {
+    let deviceInfo = deviceInfos[i];
+    if (deviceInfo.kind === 'audioinput') {
+      mics.push(deviceInfo);
+      let label = deviceInfo.label ||
+        'Microphone ' + mics.length;
+      console.log('Mic ', label + ' ' + deviceInfo.deviceId)
+      const option = document.createElement('option')
+      option.value = deviceInfo.deviceId;
+      option.text = label;
+      micSelect.appendChild(option);
+    }
+  }
+  
+  function getStream(constraints) {
+    if (!constraints) {
+      constraints = { audio: true, video: false };
+    }
+    return navigator.mediaDevices.getUserMedia(constraints);
+  }
+})();
+
 //*** AUDIO VISUALIZER ********************************************
+//JS Audio File Visualizer
+//https://codepen.io/nfj525/pen/rVBaab
+//JS Audio Input Visualizer
+//https://codepen.io/eddch/pen/ZMOjPL
+//Web Audio API
+//https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API
 //https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Visualizations_with_Web_Audio_API
 //1. HTML canvas para visualizar
 //2. Enumerar canales de entrada/salida
