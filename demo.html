@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>JustEar Demo</title>
-  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.6.3/css/all.css'>
+  <link rel="manifest" href="/manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -39,74 +39,51 @@
       display: block;
       margin: 10px auto;
     }
-
-    .mic-container {
-      height: 15vh;
-      width: 100vw;
-      display: flex;
-      align-items: left;
-      justify-content: center;
-      
-      .circle {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background: #ffffff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1;
-        transition: .5s;
-        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2);
-        
-        i {
-          color: #b2b1b1;
-          font-size: 23px;
-          transition: .9s;
-        }
-            
-        &:before {
-          content: '';
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          opacity: .2;
-          z-index: -1;
-          position:absolute;
-        }
-      }
-      
-      .circle.active {
-        background: #ff0000;
-                
-        i {
-            color: #ffffff;
-        }
-      }
-    }
-
   </style>  
 </head>
 
 <body>
-<!-- comments -->
-<h2>JustEar Demo</h2>
+  <!-- comments -->
+  <h2>JustEar Demo</h2>
+  <!-- 
+  RADIOS
+  http://hitfm.kissfmradio.cires21.com/hitfm.mp3
+  https://radio2.vip-radios.fm:18018/stream-128kmp3-IbizaChill
+  http://kissfm.kissfmradio.cires21.com/kissfm.mp3
+  http://mp3-eitb.stream.flumotion.com/eitb/gaztea.mp3
+  http://livestreaming3.esradio.fm/stream64.mp3
+  http://23603.live.streamtheworld.com/CADENASER.mp3
+  http://22713.live.streamtheworld.com/LOS40.mp3
+  http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3
+  FICHEROS en distintos formatos *.mp3 *.wav *.ogg
+  https://www.just-ear.com/demo_282.mp3
+  https://www.just-ear.com/demo_282.ogg
+  https://www.just-ear.com/demo_282.wav
+  AUDIOS YOUTUBE (no funciona po)
+  https://es.stackoverflow.com/questions/428452/js-insertar-s%C3%B3lo-el-audio-de-un-v%C3%ADdeo-de-youtube-para-m%C3%A1s-de-una-canci%C3%B3n (no funciona por bloqueo)
+  Cómo insertar audio en HTML5
+  https://www.campusmvp.es/recursos/post/como-insertar-audio-en-html5.aspx
+  Como cargar     - audio-load(); audio.play();
+  Como reproducir - audio.play();
+  Como parar      - audio.pause();audio.currentTime = 0;  
+  Como pausar     - audio.pause;
+   -->
 
+<ol>
+  <audio id="mp3_audio" src="https://www.just-ear.com/demo_282.mp3"></audio>
+  <audio id="radio_audio" src="http://kissfm.kissfmradio.cires21.com/kissfm.mp3"></audio>
   <audio id="local_audio" autoplay="false" muted></audio>
   <audio id="remote_audio" autoplay="false" muted></audio>
   <audio id="play_audio" autoplay="false" ></audio>
   
   <button id="audio_button" style="visibility: hidden">Record </button> 
-  <p>
-    <a id="compartir_label" style="visibility: hidden" target="_blank" href="https://just-ear.com">Compartir Audio</a>
-  </p>
-
-  <p>
-  <a href="https://just-ear.com">just-ear.com</a>
-  </p>
+  <p><a id="compartir_label" style="visibility: hidden" target="_blank" href="https://just-ear.com">Compartir Audio</a></p>
+  <br/>
+  <p><a href="https://just-ear.com">just-ear.com</a></p>
 </ol>
-  <!-- comments -->
-  <script type="module" src="./demo.js"></script>
 
+<!-- comments -->
+  <script type="module" src="./demo.js"></script>
+  
 </body>
 </html>

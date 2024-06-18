@@ -1,8 +1,8 @@
 //TODO MVP 1.0 DEMO Emisor/Receptores. Permite usar funcionalidad principal de emitir/recibir audio
 //2024.06.12 Google Icons. Codepen.io(Iconos) Font Awesome
 //2024.06.17 usar misma pantalla para publicar/reproducir un solo boton
-//* reproducir micro en tiempo real
-//* configurar PWA nativa
+//2024.06.17 reproducir micro en tiempo real
+//2024.06.18 configurar PWA nativa
 //* incluir botón compartir nativo
 //* incluir visualizacion grafica de audio en grafica de barras
 //* seleccionar canal de entrada (micro, fichero, reproduccion, linea de entrada aux.)
@@ -25,18 +25,18 @@
 //* incluir notificaciones con sonidos: detectar timbre puerta, portazo, alarma, etc...
 
 console.log("js start");
-import {WebRTCAdaptor} from "https://cdn.skypack.dev/@antmedia/webrtc_adaptor";
 
 //Publish and Play Audio Streams in live
 //https://github.com/orgs/ant-media/discussions/5368
 //import {WebRTCAdaptor} from "https://cdn.skypack.dev/@antmedia/webrtc_adaptor@SNAPSHOT";
+import {WebRTCAdaptor} from "https://cdn.skypack.dev/@antmedia/webrtc_adaptor";
 var mediaConstraints = {
 		video: false,
 		audio: true
 	};
-//var websocketURL = "wss://test.antmedia.io/WebRTCAppEE/websocket"
 
 //The URL where you publish and play the stream
+//let websocketURL = "wss://test.antmedia.io/WebRTCAppEE/websocket"
 let websocketURL = "wss://ovh36.antmedia.io:5443/WebRTCAppEE/websocket"
 let streamId = "JE" + parseInt(Math.random()*999999);
 let webRTCAdaptorPublisher;
@@ -64,7 +64,6 @@ var webRTCAdaptorRecord = new WebRTCAdaptor ({
 	}
 });
 
-
 let audio_button = document.getElementById("audio_button");
 let compartir_label = document.getElementById("compartir_label");
 let docURL = document.URL;
@@ -82,6 +81,8 @@ let isActive = false;
 
 if (isPlayer) {
 	streamId = urlParams.get('s');
+	document.getElementById("mp3_audio").controls = true;
+	document.getElementById("radio_audio").controls = true;
 }
 
 function mergeAndPublishAudio() {
@@ -134,8 +135,6 @@ function mergeAndPublishAudio() {
 			});
 	});
 }
-
-
 
 function publish(stream) {
 	webRTCAdaptorPublisher = new WebRTCAdaptor({
@@ -237,64 +236,6 @@ share.addEventListener("click", () => {
   nativeShare();
 });
 
-
-publish_audio_button.addEventListener("click", () => {
-	console.log("publish audio button is clicked");
-  if (publish_audio_button.innerText == "Publish") {
-	  mergeAndPublishAudio();
-  }
-  else {
-    webRTCAdaptorPublisher.stop(streamId);
-  }
-});
-*/
-/*
-//https://dribbble.com/shots/5308631-Voice-recorder
-//const micContainer = document.getElementsByClassName('mic-container')[0];
-//const micContainer = document.getElementById('mic-container');
-micContainer.addEventListener('click', (e)=> {
-  let elem = e.target;
-  elem.classList.toggle('active');
-
-	console.log("publishContainer is clicked");
-  if (publish_audio_button.innerText == "Publish") {
-	  mergeAndPublishAudio();
-  }
-  else {
-    webRTCAdaptorPublisher.stop(streamId);
-  }
-
-});
-*/
-/*
-play_audio_button.addEventListener("click", ()=> {
-	console.log("play audio button is clicked");
-  if (play_audio_button.innerText == "Play") {
-     play();
-  }
-  else {
-    webRTCAdaptorPlayer.stop(streamId);
-  }
-});
-
-//https://dribbble.com/shots/5308631-Voice-recorder
-//const playContainer = document.getElementById('play-container');
-console.log(playContainer);
-playContainer.addEventListener('click', (e)=> {
-  console.log("playContainer is clicked");
-  let elem = e.target;
-
-  if (play_audio_button.innerText == "Play") {
-		play();
- }
- else {
-	 webRTCAdaptorPlayer.stop(streamId);
- }
-
-  elem.classList.toggle('active');
-	console.log(elem.classList);
- });
-*/
 /*** AUDIO_BUTTON ****************************************************/
  function audio_button_update() {
 	if (isPlayer) {	
@@ -331,5 +272,16 @@ audio_button.addEventListener('click', (e)=> {
 	}
 });
 
+//PWA service-worker
+if ('serviceWorker' in navigator) {
+	window.addEventListener('load', () => {
+		navigator.serviceWorker.register('/service-worker.js')
+			.then(registration => {
+				console.log('ServiceWorker registration successful with scope: ', registration.scope);
+			}, error => {
+				console.log('ServiceWorker registration failed: ', error);
+			});
+	});
+}
 
 console.log("js end");
