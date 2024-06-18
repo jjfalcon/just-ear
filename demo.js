@@ -14,6 +14,7 @@
 //* configurar receptor, y parametros receptor (guardados, favoritos, etc)
 //* guardar audios de ultima semana publicados 
 //* guardar audios favoritos de usuario
+//* incluir notificaciones push
 
 //TODO MVP 3.0 AUDIO MEJORADO. Permite funcionalidades mejoradas para usuarios
 //* mejorar audio de envio en cliente
@@ -282,5 +283,83 @@ if ('serviceWorker' in navigator) {
 			});
 	});
 }
+
+//*** PUSH NOTIFICACION *******************************************
+//https://smilecomunicacion.com/notificaciones-push/
+//https://medium.com/@greennolgaa/push-notifications-in-javascript-the-comprehensive-guide-6757f2f8ea98
+
+//*** AUDIO VISUALIZER ********************************************
+//https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Visualizations_with_Web_Audio_API
+//1. HTML canvas para visualizar
+//2. Enumerar canales de entrada/salida
+//3. Conectar audio
+//4. Dibujar audio conectado en tiempo real
+
+window.onload = function() {
+  //
+
+	let file = document.getElementById("file");
+  let audio = document.getElementById("audio");
+	let canvas = document.getElementById("canvas");
+
+	file.onchange = function() {
+    let files = this.files;
+    audio.src = URL.createObjectURL(files[0]);
+    audio.load();
+    audio.play();
+	
+		let context = new AudioContext();
+    let src = context.createMediaElementSource(audio);
+    let analyser = context.createAnalyser();
+
+//    canvas.width = window.innerWidth;
+//    canvas.height = window.innerHeight;
+    let ctx = canvas.getContext("2d");
+
+    src.connect(analyser);
+    analyser.connect(context.destination);
+
+    analyser.fftSize = 256;
+
+    let bufferLength = analyser.frequencyBinCount;
+    console.log(bufferLength);
+
+    let dataArray = new Uint8Array(bufferLength);
+
+    let WIDTH = canvas.width;
+    let HEIGHT = canvas.height;
+
+    let barWidth = (WIDTH / bufferLength) * 2.5;
+    let barHeight;
+    let x = 0;
+
+    function renderFrame() {
+      requestAnimationFrame(renderFrame);
+
+      x = 0;
+
+      analyser.getByteFrequencyData(dataArray);
+
+      ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+      for (let i = 0; i < bufferLength; i++) {
+        barHeight = dataArray[i];
+        
+        let r = barHeight + (25 * (i/bufferLength));
+        let g = 250 * (i/bufferLength);
+        let b = 50;
+
+        ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+        ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
+
+        x += barWidth + 1;
+      }
+    }
+
+    audio.play();
+    renderFrame();
+  };
+};
 
 console.log("js end");

@@ -39,6 +39,19 @@
       display: block;
       margin: 10px auto;
     }
+    .app {
+      text-align: center;
+      padding-top: 20px;
+    }
+    canvas {
+      margin-top: 10px;
+      background-color: black;
+      width: 100%;
+      height: 100%;    }
+    select {
+      height: 25px;
+      margin: 0px 5px;
+    }
   </style>  
 </head>
 
@@ -69,6 +82,19 @@
 -->
 
   <ol>
+  <div class="app">
+    <select name="" id="micSelect"></select>
+
+    <select id="visSelect">
+      <option value="frequencybars">Bar</option>
+      <option value="sinewave">Wave</option>
+      <option value="circle">Circle</option>
+    </select>
+    <input type="file" id="file" accept="audio/*" />
+    <br/>
+    <canvas id="canvas" width="500" height="300"></canvas>
+  </div>
+  <audio id="audio" controls></audio>
   <audio id="mp3_audio" src="https://www.just-ear.com/demo_282.mp3"></audio>
   <audio id="radio_audio" src="http://kissfm.kissfmradio.cires21.com/kissfm.mp3"></audio>
   <audio id="local_audio" autoplay="false" muted></audio>
@@ -82,7 +108,7 @@
 <!-- 
     <a id="share" style="visibility: hidden">Share...</a>
 -->
-</p>
+  </p>
   <br/>
   <p><a href="https://just-ear.com">just-ear.com</a></p>
   </ol>

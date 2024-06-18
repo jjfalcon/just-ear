@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JustEar Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+    }
+    ol {
+      padding-left: 0;
+      list-style-type: none;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    audio {
+      width: 100%;
+      max-width: 600px;
+      display: block;
+      margin: 10px auto;
+    }
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    p, a {
+      text-align: center;
+      display: block;
+      margin: 10px auto;
+    }
+  </style>
+</head>
+<body>
+<h2>JustEar Demo</h2>
+<p>Esta demo emite en directo el audio de tu dispositivo al servidor JustEar. Este audio se puede escuchar en director por distintos receptores simultaneamente.</p>
+
+<ol>
+  <li>Haz clic en el botón "Emitir" para emitir audio local en el servidor JustEar</li>
+  <audio id="emit_audio" autoplay controls muted></audio>
+  <br/>Id: <span id="streamId1"></span> - Status: <span id="status1">Idle</span><br/>
+  <button id="emit_audio_button" disabled>Start</button>
+
+  <li>Haz clic en el botón "Reproducir" para reproducir el audio emitido en director desde servidor JustEar</li>
+  <audio id="play_audio" autoplay="true" controls></audio>
+  <button id="play_audio_button">Reproducir</button>
+
+  <p>Usa tus auriculares para escuchar el audio en diferentes canales</p>
+  <p><a href="https://just-ear.com">just-ear.com</a></p>
+</ol>
+
+<script type="module" src="./demo.js"></script>
+</body>
+</html>
+
+
