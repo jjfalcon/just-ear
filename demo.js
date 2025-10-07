@@ -24,6 +24,8 @@
 //* incluir traducción simultanea a distintos idiomas
 //* incluir elementos multimedia (texto, imagenes, video, etc)
 //* incluir notificaciones con sonidos: detectar timbre puerta, portazo, alarma, etc...
+//* Voz por IA sin servidor by midudev https://x.com/midudev/status/1812499363442102411
+//* PdfToAudio using Python https://x.com/clcoding/status/1811458432417038513
 
 console.log("js start");
 
